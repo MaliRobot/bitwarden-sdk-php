@@ -27,9 +27,10 @@ $this->clientSettings->deviceType = getenv('DEVICE_TYPE') ?: 'SDK';
 ```
 
 Authorization can be performed using access token like so:
+
 ```php
 $access_token = '<you access token here>';
-$bitwarden_sdk = new \Bitwarden\Sdk\BitwardenSDK();
+$bitwarden_sdk = new \Bitwarden\Sdk\BitwardenClient();
 $result = $bitwarden_sdk->authorize($access_token);
 ```
 
