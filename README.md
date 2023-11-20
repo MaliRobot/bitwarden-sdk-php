@@ -20,17 +20,18 @@ Client will be initialized with the default client settings if they are not prov
 via env variables.
 
 ```php
-$this->clientSettings->apiUrl = getenv('API_URL') ?: 'https://api.bitwarden.com';
-$this->clientSettings->identityUrl = getenv('IDENTITY_URL') ?: 'https://identity.bitwarden.com';
-$this->clientSettings->userAgent = getenv('USER_AGENT') ?: 'SDK';
-$this->clientSettings->deviceType = getenv('DEVICE_TYPE') ?: 'SDK';
+$client_settings = new \Bitwarden\Sdk\Schemas\ClientSettings()
+$client_settings->apiUrl = getenv('API_URL') ?: 'https://api.bitwarden.com';
+$client_settings->identityUrl = getenv('IDENTITY_URL') ?: 'https://identity.bitwarden.com';
+$client_settings->userAgent = getenv('USER_AGENT') ?: 'SDK';
+$client_settings->deviceType = getenv('DEVICE_TYPE') ?: 'SDK';
 ```
 
 Authorization can be performed using access token like so:
 
 ```php
 $access_token = '<you access token here>';
-$bitwarden_sdk = new \Bitwarden\Sdk\BitwardenClient();
+$bitwarden_sdk = new \Bitwarden\Sdk\BitwardenClient($client_settings);
 $result = $bitwarden_sdk->authorize($access_token);
 ```
 
